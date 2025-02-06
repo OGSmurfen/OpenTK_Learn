@@ -23,6 +23,12 @@ namespace Common
             {
                 ImageResult img = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
 
+                if (img == null)
+                {
+                    Console.WriteLine("Failed to load texture from file: " + path);
+                    return null;
+                }
+
                 GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, img.Width, img.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, img.Data);
             }
 

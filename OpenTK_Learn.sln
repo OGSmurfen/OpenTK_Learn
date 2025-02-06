@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triangle", "Triangle\Triangle.csproj", "{4888554A-4F89-47B9-88B2-7C1387C2B7D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{5F5FCA5D-9A6F-4BB6-874C-369DCFE09C36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientSquare", "GradientSquare\GradientSquare.csproj", "{4D562DD1-2290-4A64-B9D1-3C57DA68E37F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4888554A-4F89-47B9-88B2-7C1387C2B7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4888554A-4F89-47B9-88B2-7C1387C2B7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4888554A-4F89-47B9-88B2-7C1387C2B7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4888554A-4F89-47B9-88B2-7C1387C2B7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F5FCA5D-9A6F-4BB6-874C-369DCFE09C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5FCA5D-9A6F-4BB6-874C-369DCFE09C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5FCA5D-9A6F-4BB6-874C-369DCFE09C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5FCA5D-9A6F-4BB6-874C-369DCFE09C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D562DD1-2290-4A64-B9D1-3C57DA68E37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D562DD1-2290-4A64-B9D1-3C57DA68E37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D562DD1-2290-4A64-B9D1-3C57DA68E37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D562DD1-2290-4A64-B9D1-3C57DA68E37F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

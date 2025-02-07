@@ -70,15 +70,14 @@ namespace MatrixTransformation
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
             // specify texture coords:
-            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
             GL.EnableVertexAttribArray(1);
+
             
-
-
             shader.Use();
             texture1.Use(TextureUnit.Texture0);
 
-            shader.SetInt("tex0", 1);
+            
 
         }
 

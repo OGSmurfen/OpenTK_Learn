@@ -64,6 +64,12 @@ namespace Common
             GL.UseProgram(Handle);
         }
 
+        public void SetInt(string name, int value)
+        {
+            int location = GL.GetUniformLocation(Handle, name);
+            GL.Uniform1(location, value); // uniform1 is a 1-comopnent value like a float or int. could be a uniformMatrix or other!
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)

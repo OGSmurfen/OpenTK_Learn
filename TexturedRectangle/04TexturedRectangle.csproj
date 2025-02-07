@@ -8,15 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Shaders\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="OpenTK" Version="4.9.3" />
+    <PackageReference Include="StbImageSharp" Version="2.30.15" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Common\00Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shaders\" />
   </ItemGroup>
 
 </Project>

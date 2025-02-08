@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05MultipleTextures", "Multi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06MatrixTransformation", "MatrixTransformation\06MatrixTransformation.csproj", "{3DC44FFD-1DED-410E-B2B3-7E2AEC8E3A47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_2Dplane_in_3Dspace_ROTATING", "07_2Dplane_in_3Dspace\07_2Dplane_in_3Dspace_ROTATING.csproj", "{7E404F58-042B-4477-963B-26671A8A24D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{3DC44FFD-1DED-410E-B2B3-7E2AEC8E3A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC44FFD-1DED-410E-B2B3-7E2AEC8E3A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC44FFD-1DED-410E-B2B3-7E2AEC8E3A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E404F58-042B-4477-963B-26671A8A24D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E404F58-042B-4477-963B-26671A8A24D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E404F58-042B-4477-963B-26671A8A24D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E404F58-042B-4477-963B-26671A8A24D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

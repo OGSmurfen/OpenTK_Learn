@@ -1,7 +1,9 @@
 ﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +14,8 @@ namespace Common
         public int Handle;
 
         private bool _disposed = false;
+
+        private readonly Dictionary<string, int> uniformLocations;
 
         public Shader(string vertexPath, string fragmentPath)
         {
@@ -57,6 +61,18 @@ namespace Common
             GL.DetachShader(Handle, fragmentShader);
             GL.DeleteShader(fragmentShader);
             GL.DeleteShader(vertexShader);
+
+
+
+            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out int numberOfUniforms);
+
+            uniformLocations = new Dictionary<string, int>();
+            for(int i = 0; i < numberOfUniforms; i++)
+            {
+                string key = GL.GetActiveUniform(Handle, i, out _, out _);
+                int location = GL.GetUniformLocation(Handle, key);
+                uniformLocations.Add(key, location);
+            }
         }
 
         public void Use()
@@ -68,6 +84,22 @@ namespace Common
         {
             int location = GL.GetUniformLocation(Handle, name);
             GL.Uniform1(location, value); // uniform1 is a 1-comopnent value like a float or int. could be a uniformMatrix or other!
+        }
+
+        public void SetMatrix4(string name, Matrix4 data)
+        {
+            GL.UseProgram(Handle);
+            GL.UniformMatrix4(uniformLocations[name], true, ref data);
+        }
+
+        public int GetUniformLocation(string uniformName)
+        {
+            return GL.GetUniformLocation(Handle, uniformName);
+        }
+
+        public int GetAttribLocation(string attribName)
+        {
+            return GL.GetAttribLocation(Handle, attribName);
         }
 
         protected virtual void Dispose(bool disposing)

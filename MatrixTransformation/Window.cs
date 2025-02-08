@@ -1,5 +1,6 @@
 ﻿using Common;
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
@@ -48,6 +49,8 @@ namespace MatrixTransformation
 
             texture1 = Texture.LoadFromFile(texturePath + @"container.jpg");
             texture2 = Texture.LoadFromFile(texturePath + @"awesomeface.png");
+
+            
         }
 
         protected override void OnLoad()
@@ -62,23 +65,33 @@ namespace MatrixTransformation
 
             vao = GL.GenVertexArray();
             GL.BindVertexArray(vao);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
+            int aPositionPos = shader.GetAttribLocation("aPosition");
+            GL.VertexAttribPointer(aPositionPos, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(aPositionPos);
 
             ebo = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
             // specify texture coords:
-            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-            GL.EnableVertexAttribArray(1);
+            int texturePos = shader.GetAttribLocation("texturePos");
+            GL.VertexAttribPointer(texturePos, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(texturePos);
 
             
             shader.Use();
             texture1.Use(TextureUnit.Texture0);
+            texture2.Use(TextureUnit.Texture1);
 
-            
+            shader.SetInt("tex0", 0);
+            shader.SetInt("tex1", 1);
 
+            Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(90f));
+            Matrix4 scale = Matrix4.CreateScale(.5f, .5f, .5f);
+            Matrix4 trans = rotation * scale;
+
+            int matrixUniformLocation = shader.GetUniformLocation("transform");
+            GL.UniformMatrix4(matrixUniformLocation, true, ref trans);
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)

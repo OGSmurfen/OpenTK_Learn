@@ -13,24 +13,24 @@ namespace _08_RotatingCube
 
         float[] cubeVerts =
         {   // rect coords         
-            -0.5f, 0.5f, 0.5f,       
-            0.5f, 0.5f, 0.5f,         
-            0.5f, -0.5f, 0.5f,        
-            -0.5f, -0.5f, 0.5f,
-            -0.5f, 0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f,
-        };
+            -0.5f, 0.5f, 0.5f,          0f, 1f, 
+            0.5f, 0.5f, 0.5f,           1f, 1f,
+            0.5f, -0.5f, 0.5f,          1f, 0f,
+            -0.5f, -0.5f, 0.5f,         0f, 0f,
+            -0.5f, 0.5f, -0.5f,         0f, 1f,
+            0.5f, 0.5f, -0.5f,          1f, 1f,
+            0.5f, -0.5f, -0.5f,         1f, 0f,
+            -0.5f, -0.5f, -0.5f,        0f, 0f
+        };  
 
         uint[] indices =
         {
-            0, 1, 2,
-            0, 2, 3,
-            1, 5, 6,
-            1, 6, 2,
-            0, 4, 7,
-            1, 7, 3,
+            0, 1, 2, // front
+            0, 2, 3, // front
+            1, 5, 6, // right
+            1, 6, 2, // right
+            0, 4, 7, //
+            0, 7, 3,
             3, 2, 6,
             3, 6, 7,
             4, 7, 6, 
@@ -46,6 +46,9 @@ namespace _08_RotatingCube
         private Shader shader;
         string shadersPath;
 
+        private Texture tex;
+        string texturesPath;
+
         private Matrix4 viewMatrix; // this is the 'camera'
         private Matrix4 projectionMatrix; // how vertices will be projected
         private Matrix4 modelMatrix;
@@ -56,7 +59,12 @@ namespace _08_RotatingCube
         {
             shadersPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\Shaders\";
             shadersPath = Path.GetFullPath(shadersPath);
-           
+
+            texturesPath = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\Textures\";
+            texturesPath = Path.GetFullPath(texturesPath);
+
+            tex = Texture.LoadFromFile(texturesPath + @"container.jpg");
+            tex.Use(TextureUnit.Texture0);
         }
 
 
@@ -75,8 +83,11 @@ namespace _08_RotatingCube
 
             vertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(vertexArrayObject);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
+
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(1);
 
             elementBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferObject);
